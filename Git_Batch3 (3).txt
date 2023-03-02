@@ -1,0 +1,147 @@
+There are many version version control tools available:
+1. git
+2. svn
+3. cvs
+4. TFS
+
+Git (Global information tracker)-source code management tool
+Is is version control syatem or tool which is used to track versions files and directories.
+
+Difference between Git and SVN
+Git - Git is a distributed version control system means whole repository will be there in the local workspace.
+If you want to switch to previous version of code you can do it in the local workspace itself.
+Git has many features like rebase, fetch and stash etc.
+
+svn - It is a centralized version control system where we have only latest version of a code in the local workspace.
+If you want to switch to a previous versions of code then you need to checkout that prevoius version from central.
+It doesn't have direct commands.
+
+Git installation 
+
+On ubuntu 
+$sudo apt-get update
+$sudo apt-get install -y git
+
+On RHEL/CentOS/Fedora
+$sudo yum -y update
+$sudo yum install -y git
+
+* Git commands
+
+1. To configure name and email globally for all users on a soecific machine
+git config --global user.name "username"
+git config --global user.email "emai id"
+
+2. create git repository directory
+mkdir <gitreponame>
+
+3. Initialize git repository
+cd git_repo/
+git init
+
+4. ls -al - to make sure .git is present
+
+5. vi <filename> : Add few lines and save it
+
+6. git status : To check whether the files are in workspace or staging area or in local/remote repo.
+                To make sure working directory is clean.
+
+7. git add <filename> : To add files from workspace to staging area.
+           syn : git add <filename>
+                 git add .
+                 git add -u
+                 git add -add
+8. git commit -m "<msg>" : This will commit the files from staging area to git repo.
+
+9. git log : It shows the history of the repository. 
+
+10. git log <filename> : It shows the history of single file
+
+11. git log -2 : It shows the latest 2 commits of any file.
+
+12. git log -2 <filename> :	It shows the latest 2 commits of particular file.
+
+Workflow of Git
+
+* Worspace : It is a directory where we modify project related files.
+             Files present in the workspace are untracked files.
+             To move the files from workspace to staging area we use git add command.
+* Staging area/Index area : Here we save the changes.
+                 To save the changes we use "git commit" it will get committed to the git repo.
+                 Here commit id will get created and the files present in this area are called as indexed file.	
+* Local repo/git repo : It is a location where version controlling happens and the files present here are called as committed files.
+
+
+Branch : Branch is for parallel development
+         If two people or two teams work on a same piece of code on two different branches then later we can integrate it by merging.
+		 syn : git branch 
+		 1. git branch : It is used to list branches and check on which branch we are working.
+		 2. git branch <branch name> : It is used to create branch
+		 3. git checkout <branch name> : It is used to switch to the new branch
+		 4. git checkout -B <new branch name> : It is used to create new branch and checkout to that branch.
+		 5. git branch -d <branch name> : It is used to delete the branch.
+Note : Whenver a branch is created the entire commit history of the parent branch will be copied to the new branch.
+Note : Irrespective of on which branch a file created or modified, git only checks from which branch it is committed and that file belongs to the committed branch only.
+
+Tags : Tag is a name given to a set of versions of files.
+       It indicates milestone of a project.
+	   We can easily remember tags
+	syn : git tag
+	1. git tag : It is used to list the tags.
+	2. git tag <tga name> : It is used to create new tag
+	3. git tag -d <tag name> : It is used to delete tag.
+	
+Task : Create github account and explore github.
+
+Merge :
+Merge is nothing but integrating two branches.
+syn : git merge <branch_name>
+Note : When you try to merge source branch to a destination branch you should be inside destination branch.
+
+Merge conflicts:
+Merge conflict occurs if the same line of code is modified on the same file on two differnt branches and when we try to 
+merge those 2 branches, we will get merge conflicts.
+Resolution:
+If i don't know whose changes should i take in the merge, I contach developers who modified file on branch1 and branch2 then they will
+decide and give new change. After that i will commit that to a file and continue with merge.
+
+Rebase :
+Rebase is also nothing but merge here one branch will get added to the tip of another branch
+syn : git rebase <branch-name>
+
+git commit --amend : It is used to edit the commit msg
+
+Git clone : Clone is used to bring remote repository to the local workspace for the first time.
+syn : git clone url
+git push : git push is used to push the changes to the remote repository.
+syn : git push origin branchname
+git pull : Git pull is used to pull the changes from remote repo and merge it to the local repo automatically.
+syn : git pull origin branchname
+git fetch : Git fetch is used to bring the changes from remote repo and store it in a separate branch called FETCH_HEAD, so that 
+            we can review the changes and merge if necessary.
+syn : git fetch origin branchname
+
+Git cherry-pick : 
+
+It is used to merge specific commit to a branch and also used to pick a particular change in a branch.
+
+syn : git cherry-pick <commit id>
+To merge multiple commits 
+syn : git cherry-pick <c1> <c2> <c3>....so on
+ 				 
+There are 2 types of repository
+1. Bare repository
+2. Non bare repository
+
+1. Bare repository : It acts as a central repository, here we can only push and pull the changes to the repository 
+& we can't perform or do any git operations.
+
+syn : git init --bare
+
+2. Non bare repository : It acts as a local repo/git repo, here we can modify the files and push to a remote repo, and 
+we can run all the git commands here.
+
+syn : git init
+
+
+
